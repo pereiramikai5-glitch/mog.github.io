@@ -1,56 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en"> <!-- SEO: Added language attribute to help search engines understand page language -->
+
 <head>
-<title>Page</title>
+    <meta charset="UTF-8"> <!-- SEO: Proper character encoding improves indexing and readability -->
+
+    <title>Online Toy Store India | Buy Kids Toys at Best Prices</title>
+    <!-- SEO: Keyword-rich and descriptive title for better search engine ranking -->
+
+    <meta name="description" content="Buy kids toys online including teddy bears, remote cars, and dolls at affordable prices in India. Add to cart and enjoy secure checkout.">
+    <!-- SEO: Meta description improves click-through rate in search results -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO: Mobile-friendly design improves ranking and user experience -->
 </head>
+
 <body>
 
-<div>Welcome</div>
+<header>
+    <h1>Online Toy Store for Kids in India</h1>
+    <!-- SEO: Single H1 tag clearly defines main topic of the page -->
 
-<div>
-    <div>
-        <div>Item 1</div>
-        <div>500</div>
-        <button onclick="a('a',500)">Click</button>
-    </div>
+    <p>Welcome to our online toy shop where you can buy quality toys for children at affordable prices.</p>
+    <!-- SEO: Keyword-optimized descriptive content helps search engines understand relevance -->
+</header>
 
-    <div>
-        <div>Item 2</div>
-        <div>800</div>
-        <button onclick="a('b',800)">Click</button>
-    </div>
+<nav>
+    <!-- SEO: Internal navigation improves crawlability and user experience -->
+    <a href="#products">View Toys</a> |
+    <a href="#cart">Shopping Cart</a>
+</nav>
 
-    <div>
-        <div>Item 3</div>
-        <div>400</div>
-        <button onclick="a('c',400)">Click</button>
-    </div>
-</div>
+<section id="products">
+    <!-- SEO: Section tag provides semantic structure for better indexing -->
 
-<div>
-    <div>Cart</div>
-    <ul id="x"></ul>
-    <div>Total <span id="t">0</span></div>
-    <button onclick="p()">Pay</button>
-</div>
+    <h2>Available Toys</h2>
+    <!-- SEO: H2 used for proper heading hierarchy -->
+
+    <article>
+        <!-- SEO: Article tag defines individual product content -->
+        <h3>Teddy Bear for Kids</h3>
+
+        <img src="https://images.unsplash.com/photo-1601758123927-1965f17c1b9c"
+             width="200"
+             alt="Soft brown teddy bear toy for kids">
+        <!-- SEO: Real image URL with descriptive alt text improves image SEO -->
+
+        <p>Price: ₹500</p>
+        <button onclick="addToCart('Teddy Bear', 500)">Add to Cart</button>
+    </article>
+
+    <article>
+        <h3>Remote Control Car Toy</h3>
+
+        <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30"
+             width="200"
+             alt="Remote control racing car toy for children">
+        <!-- SEO: Keyword included in alt text for better image indexing -->
+
+        <p>Price: ₹800</p>
+        <button onclick="addToCart('Remote Control Car', 800)">Add to Cart</button>
+    </article>
+
+    <article>
+        <h3>Kids Fashion Doll</h3>
+
+        <img src="https://images.unsplash.com/photo-1608889175123-4b3b0b5c1f87"
+             width="200"
+             alt="Fashion doll toy for kids">
+        <!-- SEO: Alt tag improves accessibility and Google Image ranking -->
+
+        <p>Price: ₹400</p>
+        <button onclick="addToCart('Fashion Doll', 400)">Add to Cart</button>
+    </article>
+
+</section>
+
+<section id="cart">
+    <h2>Shopping Cart</h2>
+    <!-- SEO: Proper heading structure improves content hierarchy -->
+
+    <ul id="cartItems"></ul>
+
+    <h3>Total Amount: ₹<span id="total">0</span></h3>
+
+    <button onclick="makePayment()">Proceed to Secure Payment</button>
+    <!-- SEO: Descriptive button text improves usability -->
+</section>
+
+<footer>
+    <!-- SEO: Footer content adds credibility and completeness -->
+    <p>© 2026 Online Toy Store India. All Rights Reserved.</p>
+    <p>This website is a demo e-commerce project for educational purposes.</p>
+</footer>
 
 <script>
-var z = 0;
+    let total = 0;
 
-function a(n,p){
-    var li = document.createElement("li");
-    li.innerHTML = n + " " + p;
-    document.getElementById("x").appendChild(li);
-    z = z + p;
-    document.getElementById("t").innerHTML = z;
-}
+    function addToCart(name, price) {
+        let cart = document.getElementById("cartItems");
+        let item = document.createElement("li");
+        item.textContent = name + " - ₹" + price;
+        cart.appendChild(item);
+        total += price;
+        document.getElementById("total").textContent = total;
+    }
 
-function p(){
-    alert("Done");
-    document.getElementById("x").innerHTML="";
-    z = 0;
-    document.getElementById("t").innerHTML = 0;
-}
+    function makePayment() {
+        if (total === 0) {
+            alert("Your cart is empty!");
+        } else {
+            alert("Payment Successful! (Demo Payment Only)");
+            document.getElementById("cartItems").innerHTML = "";
+            total = 0;
+            document.getElementById("total").textContent = total;
+        }
+    }
 </script>
 
 </body>
